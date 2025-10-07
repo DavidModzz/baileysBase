@@ -1,13 +1,13 @@
 {
   "name": "baileysbase",
   "version": "1.0.0",
-  "description": "base para inicar a crear un bot de whatsapp usando baileys",
+  "description": "base para iniciar a crear un bot de whatsapp usando baileys",
   "license": "ISC",
   "author": "DavidModzz",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && node ."
   },
   "dependencies": {
     "@discordjs/collection": "^2.1.1",

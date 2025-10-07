@@ -1,6 +1,7 @@
 import { jidNormalizedUser } from "baileys";
 import serialize from "#lib/core/serialize.js";
 import { getMessageContent, getGroupAdmins } from "#lib/utils.js";
+import config from "../config.js";
 
 export default async (sock, { messages, type }) => {
     if (type !== "notify") return;
@@ -15,7 +16,7 @@ export default async (sock, { messages, type }) => {
         const content = getMessageContent(msg);
         if (!content) return;
         
-        const prefix = "/";
+        const prefix = config.prefix;
         if (!content.startsWith(prefix)) return;
      
         const args = content.slice(prefix.length).trim().replace(/\n+/g, ' ').split(/ +/);

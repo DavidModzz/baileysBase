@@ -55,7 +55,7 @@ async function loadEvents(sock) {
 
     console.log("Eventos cargados");
   } catch (error) {
-    console.error("Erro cargando los eventos:", error);
+    console.error("Error cargando los eventos:", error);
   }
 };
 

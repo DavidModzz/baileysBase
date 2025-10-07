@@ -10,7 +10,7 @@ import { loadCommands, loadEvents } from "./lib/loaders.js"
 
 const logger = pino({ level: "silent" });
 
-export async function startSock(phoneNumber) {
+export async function startSock() {
     // Se guardan las sesiones en la carpeta "auth"
     const { state, saveCreds } = await useMultiFileAuthState("./auth");
     const { version } = await fetchLatestBaileysVersion();
@@ -26,10 +26,9 @@ export async function startSock(phoneNumber) {
     });
 
     sock.ev.on("creds.update", saveCreds);
-    sock.id = phoneNumber;
     
     await loadEvents(sock)
     await loadCommands(sock)
 }
 
-startSock("595994966449")
+startSock()

@@ -1,6 +1,7 @@
 import { startSock } from "../index.js";
 import { delay, DisconnectReason } from "baileys";
 import { Boom } from "@hapi/boom";
+import { ask } from "#lib/utils.js";
 
 export default async (sock, update) => {
     try {
@@ -8,13 +9,14 @@ export default async (sock, update) => {
     
         if (connection == "connecting" || !!qr) {
             await delay(1500); // delay necesario para evitar errores 
-            const code = await sock.requestPairingCode(sock.id);
-            console.log(`[${sock.id}] Codigonde emparejamiento:`, code);
+            const phone = await ask("Ingresa tu número de WhatsApp con el código de país, sin el signo +:\nEjemplo: 595981234567\n");
+            const code = await sock.requestPairingCode(phone);
+            console.log("Codigo de emparejamiento:", code);
             return;
         }
     
         if (connection === "open") {
-            console.log(`[${sock.id}] Conexión abierta`);
+            console.log("Conexión abierta");
             return;
         }
         
@@ -29,20 +31,20 @@ export default async (sock, update) => {
             ].includes(statusCode);
             
             console.log(
-                `[${sock.id}] Conexión cerrada. Código: ${statusCode}. ${
+                `Conexión cerrada. Código: ${statusCode}. ${
                 shouldReconnect ? "Reconectando..." : "No se reconectará."
                 }`
             );
             
             if (!shouldReconnect) {
-                console.error(`[${sock.id}] Conexión cerrada permanentemente, elimina la carpeta "auth" y vuelve a emparejar.`);
+                console.error(`Conexión cerrada permanentemente, elimina la carpeta "auth" y vuelve a emparejar.`);
                 process.exit(1);
             }
             
-            await startSock(sock.id);
+            await startSock();
             return;
         }
     } catch (err) {
-        console.error(`[${sock.id}] Error en connection.update:`, err);
+        console.error("Error en connection.update:", err);
     }
 }
