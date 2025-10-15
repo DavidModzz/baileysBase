@@ -17,9 +17,9 @@ export default (options) => {
     
     sock.getPNForLID = async (LID) => {
         const normalized = jidNormalizedUser(LID)
-        if (isLidUser(normalized)) return normalized;
+        if (isPnUser(normalized)) return normalized;
         
-        const result = store.getPNForLID(normalized);
+        const result = await store.getPNForLID(normalized);
         
         return result ? jidNormalizedUser(result) : null;
     }
@@ -28,7 +28,7 @@ export default (options) => {
         const normalized = jidNormalizedUser(PN)
         if (isLidUser(normalized)) return normalized;
         
-        const result = store.getLIDForPN(normalized);
+        const result = await store.getLIDForPN(normalized);
         
         return result ? jidNormalizedUser(result) : null;
     }
