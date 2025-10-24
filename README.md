@@ -1,5 +1,7 @@
 # Base de Bot con Baileys
 
+https://whatsapp.com/channel/0029VagSzny6rsR0yY19XY1g
+
 ## Introducción
 
 Esta base proporciona una arquitectura **modular y escalable** para desarrollar bots de WhatsApp con **Baileys**.  
