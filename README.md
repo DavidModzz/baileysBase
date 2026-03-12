@@ -1,6 +1,8 @@
 # Base de Bot con Baileys
 
-https://whatsapp.com/channel/0029VagSzny6rsR0yY19XY1g
+## [Hosting gratuito](https://discord.gg/6TTZtvwX)
+
+## [Canal de WhatsApp](https://whatsapp.com/channel/0029VagSzny6rsR0yY19XY1g)
 
 ## Introducción
 
